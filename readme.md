@@ -1,11 +1,11 @@
-# work-from [![Build Status](https://travis-ci.org/bukinoshita/work-from.svg?branch=master)](https://travis-ci.org/bukinoshita/work-from)
+# workfrom-cli [![Build Status](https://travis-ci.org/bukinoshita/workfrom-cli.svg?branch=master)](https://travis-ci.org/bukinoshita/workfrom-cli)
 
 > Find places to work near you
 
 ## Install
 
 ```bash
-$ yarn add global work-from
+$ yarn add global workfrom-cli
 ```
 
 ## Usage
