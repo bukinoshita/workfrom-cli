@@ -1,6 +1,6 @@
 {
   "name": "work-from",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Find places to work near you",
   "main": "index.js",
   "repository": "https://github.com/bukinoshita/work-from.git",
@@ -12,8 +12,17 @@
   "bin": {
     "workfrom": "index.js"
   },
-  "files": ["index.js", "lib"],
-  "keywords": ["work", "from", "places", "wifi", "workfrom"],
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "keywords": [
+    "work",
+    "from",
+    "places",
+    "wifi",
+    "workfrom"
+  ],
   "dependencies": {
     "chalk": "^2.3.0",
     "meow": "^4.0.0",
@@ -30,6 +39,8 @@
     "xo": "^0.18.2"
   },
   "xo": {
-    "extends": ["prettier"]
+    "extends": [
+      "prettier"
+    ]
   }
 }
