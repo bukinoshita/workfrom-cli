@@ -20,9 +20,11 @@ const cli = meow(
  Example:
    $ workfrom
    $ workfrom -r=50
+   $ workfrom -e=starbucks
 
  Options:
    -r, --radius          Radius
+   -e, --exclude         Exclude a certain pattern
    -h, --help            Show help options
    -v, --version         Show version
 `,
@@ -39,6 +41,7 @@ updateNotifier({ pkg: cli.pkg }).notify()
 
 const run = async () => {
   const hasRadius = cli.flags.r
+  const excludePattern = cli.flags.e
   const { lat, long } = await wer()
   const radius = hasRadius || 10
   const spinner = ora(`Finding places to work ${radius} miles near you.`)
@@ -59,7 +62,11 @@ const run = async () => {
       )
     }
 
-    response.map(({ title, street, city, description, distance }) => {
+    const filteredResponse = excludePattern 
+		  ? response.filter(({title}) => !title.toLowerCase().includes(excludePattern)) 
+		  : response
+
+    filteredResponse.map(({ title, street, city, description, distance }) => {
       const log = `
 ${gray(rightPad('Name:', 12))} ${title}
 ${gray(rightPad('Street:', 12))} ${street}
@@ -72,7 +79,7 @@ ${gray(rightPad('Description:', 12))} ${description}
     })
 
     shoutSuccess(
-      `We found ${meta.results.total} places to work ${radius} miles near you.`
+      `We found ${filteredResponse.length} places to work ${radius} miles near you.`
     )
   } catch (err) {
     console.log(err)
